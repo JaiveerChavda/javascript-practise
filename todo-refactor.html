@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToDo App</title>
+    <link rel="stylesheet" href="reset.css" />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+          "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+          "Helvetica Neue", sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      .todo-container {
+        min-height: 100vh;
+        padding: 10px;
+        background: #f3f4f6;
+      }
+
+      .todo-app {
+        margin: auto;
+        margin-top: 30px;
+        max-width: 32rem;
+        background-color: white;
+        padding: 2rem;
+        border-radius: 0.25rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        color: #374151;
+      }
+
+      .todo-input {
+        width: 90%;
+        border: none;
+        box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.1),
+          0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        padding: 14px;
+        font-size: 16px;
+        margin-top: 16px;
+      }
+
+      .todo-list {
+        margin-top: 32px;
+      }
+
+      .todo-item-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 24px;
+      }
+
+      .todo-item {
+        display: flex;
+        align-items: center;
+        flex: 1;
+        font-size: 18px;
+        margin-right: 24px;
+      }
+
+      .todo-item-label {
+        margin-left: 16px;
+      }
+
+      .todo-item-input {
+        margin-left: 8px;
+        width: 100%;
+        border: none;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+          0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        padding: 8px;
+        font-size: 18px;
+      }
+
+      .line-through {
+        text-decoration: line-through;
+      }
+
+      .remaining-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #6b7280;
+        margin-top: 22px;
+        padding-top: 16px;
+        border-top: 1px solid lightgray;
+      }
+
+      h2 {
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      .x-button {
+        font-size: 26px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="todo-container">
+      <div class="todo-app">
+        <h2>ToDo App</h2>
+
+        <form action="#" id="todoForm">
+          <input
+            type="text"
+            class="todo-input"
+            id="todo"
+            placeholder="What do you want to complete?"
+          />
+        </form>
+
+        <ul class="todo-list">
+          <li class="todo-item-container">
+            <div class="todo-item">
+              <input type="checkbox" class="todo-check" />
+              <span class="todo-item-label">take over world</span>
+            </div>
+            <button class="x-button">&times;</button>
+          </li>
+        </ul>
+
+        <div class="remaining-container">
+          <p><span id="itemsRemaining">0</span> items remainings</p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const todoApp = {
+        init() {
+          // selecting DOM elements
+          this.cacheDomElements();
+          this.calculateRemainingTodo();
+          this.listenForEvents();
+        },
+
+        cacheDomElements(){
+          // selecting DOM elements
+          this.todoForm = document.querySelector("#todoForm");
+          
+          this.todoFormInput = document.querySelector(".todo-input");
+
+          this.todoItem = document.querySelector(".todo-item-container");
+
+          this.todoList = document.querySelector(".todo-list");
+
+          this.itemsRemaining = document.querySelector("#itemsRemaining");
+        },
+
+        calculateRemainingTodo() {
+          let todoItemLabels = document.querySelectorAll(".todo-item-label");
+
+          this.itemsRemaining.textContent = Array.from(todoItemLabels).filter((todoItemLabel) => {
+            return !todoItemLabel.classList.contains("line-through");
+          }).length;
+        },
+
+        listenForEvents() {
+          this.todoForm.addEventListener("submit",this.addTodo.bind(this));
+          this.todoList.addEventListener("click",this.checkOrDeleteTodo.bind(this));
+        },
+
+        addTodo(event){
+          event.preventDefault();
+
+          if (this.todoFormInput.value === "") {
+            return;
+          }
+
+          let newTodoItem = this.todoItem.cloneNode(true);
+
+          newTodoItem.querySelector(".todo-item-label").innerText = this.todoFormInput.value;
+
+          this.todoList.appendChild(newTodoItem);
+
+          this.todoFormInput.value = "";
+
+          this.todoFormInput.focus();
+
+          this.calculateRemainingTodo();
+        },
+
+        checkOrDeleteTodo(event){
+          if (event.target.classList.contains("x-button")) {
+            this.deleteTodo(event.target);
+          }
+
+          if (event.target.classList.contains("todo-check")) {
+            this.checkTodo(event.target);
+          }
+
+          this.calculateRemainingTodo();
+        },
+
+        deleteTodo(element){
+          const todoItemToRemove = element.closest(
+              ".todo-item-container"
+            );
+            todoItemToRemove.remove();
+        },
+
+        checkTodo(element){
+          const todoItemToComplete = element.nextElementSibling;
+
+          todoItemToComplete.classList.toggle("line-through");
+        }
+
+      };
+
+      todoApp.init();
+    </script>
+  </body>
+</html>
