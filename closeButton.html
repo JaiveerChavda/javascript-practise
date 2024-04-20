@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>close button example</title>
+    <style>
+        body{
+            background-color: rgb(228, 228, 228);
+
+        }
+        .cont{
+            max-width: 700px;
+            margin: 48px auto;
+            padding: 24px;
+        }
+
+        .paragraphs{
+            background-color: white;
+            padding: 16px;
+            border-bottom: 1px solid gray;            
+        }        
+        .flex{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .button{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="cont">
+        <div class="paragraphs">
+            <div class="flex"><h3 class="title">Monkey</h3> <button onclick="hidePara(event)">[X]</button></div>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde, dolorum non doloribus iure repellendus, nesciunt quasi commodi voluptas laudantium animi laborum consequatur adipisci aspernatur necessitatibus dicta explicabo provident! Odio, unde dolorem? Nam dignissimos doloribus earum, veniam nostrum iusto ipsa excepturi, asperiores at enim itaque eius veritatis possimus ad aliquid delectus?</p>
+        </div>
+        <div class="paragraphs">
+            <div class="flex"><h3 class="title">Loins</h3> <button onclick="hidePara(event)">[X]</button></div>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequuntur, optio praesentium? Eveniet at delectus odio aspernatur, ipsam reprehenderit eum numquam exercitationem fugiat similique, molestias temporibus praesentium, explicabo rerum eius ipsum mollitia. Pariatur ullam architecto illo enim, quia omnis! Pariatur quas quo voluptas sunt sequi architecto quaerat ea placeat, repellat excepturi.</p>
+        </div>
+        <div class="paragraphs">
+            <div class="flex"><h3 class="title">Horese</h3> <button onclick="hidePara(event)">[X]</button></div>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores possimus eligendi quas expedita blanditiis a facere est, voluptates molestiae rerum omnis, architecto eius debitis dicta qui dolores. Perspiciatis, nemo, vero non molestias modi similique nulla accusantium temporibus doloribus rerum officiis quia amet, mollitia quam nihil commodi. Velit itaque dicta mollitia!</p>
+        </div>
+    </div>
+    <script>
+        let para = document.querySelector('.paragraphs');
+        let closeBtn = document.querySelector('.button');
+
+        function hidePara(event)
+        {
+            let para = event.currentTarget.parentElement.parentElement;
+            para.style.display = 'none';
+        }        
+    </script>
+</body>
+</html>

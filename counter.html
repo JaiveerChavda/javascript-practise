@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+    <style>
+        .container{
+            margin: auto;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .counterOperations{
+            display: flex;
+            gap: 16px;
+            justify-content: center;            
+        }
+
+        .counterValue{
+            margin: 32px 0;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Counter</h1>
+        <div class="counterValue" id="counterValue">0</div>
+        <div class="counterOperations">
+            <button id="increment">Increment</button>
+            <button id="decrement">Decrement</button>
+            <button id="reset">Reset</button>
+        </div>
+    </div>
+    <script>
+        let counterValueElement = document.querySelector('#counterValue');
+        
+        let count = 0;
+
+        let inc = document.querySelector('#increment');
+        let dec = document.querySelector('#decrement');
+        let reset = document.querySelector('#reset');
+
+        function setCounterColor()
+        {
+            if(count > 0)
+            {
+                counterValueElement.style.color = 'lightgreen';
+            }else if(count < 0){
+                counterValueElement.style.color = 'red';
+            }else{
+                counterValueElement.style.color = 'black';
+            }
+        }
+
+        //increment the counter
+        inc.addEventListener('click',() => {
+            count += 1;
+            counterValueElement.innerText = count;
+            setCounterColor();
+        })
+
+        //decrement the counter
+        dec.addEventListener('click',() => {
+            count -= 1;
+            counterValueElement.innerText = count;
+            setCounterColor();
+        })
+
+        //reset the counter
+        reset.addEventListener('click',() => {
+            count = 0;
+            counterValueElement.innerText = count;
+            setCounterColor();
+        })
+
+    </script>
+</body>
+</html>

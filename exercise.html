@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript exercise</title>
+    <script src="exercise.js"></script> 
+
+</head>
+<body>
+    <h3>hello beautiful</h3>
+    <!-- <legend>
+        <form>
+            <p>1st Number :<input type="number" id="num1"></p>
+            <p>2nd Number :<input type="number" id="num2"></p>
+            <input type="button" onclick="multiply()" value="multiply">
+            <input type="button" onclick="divide()" value="divide">
+
+            <p>Result is: <span id="result"></span> </p>
+        </form>
+    </legend> -->
+
+    <!-- temperature conversion -->
+    <!-- <legend>
+        <form action="">
+            <input type="number" id="f">
+            <input type="button" onclick="convertToC()" value="ConvertCelcius">
+            <p>Degrees celcius: <span id="cresult"></span></p>
+
+            <input type="number" id="c">
+            <input type="button" onclick="convertToF()" value="ConvertFahrenheit">
+            <p>Degrees celcius: <span id="cresult"></span></p>
+        </form>
+    </legend> -->
+
+    <ul class="todo-list">
+        <li>Buy groceries
+            <ul class="grocery">
+                <li>bread</li>
+                <li>milk</li>
+                <li>chicken</li>
+            </ul>
+        </li>
+        <li>Pay bills</li>
+        <li>Take out the trash</li>
+    </ul>
+    <ul class="todo-list">
+        <li>Buy groceries</li>
+        <li>Pay bills</li>
+        <li>Take out the trash</li>
+    </ul>
+
+    <button id="read">read something</button>
+    <button id="update">read something</button>
+
+<script>
+    let read = document.querySelector("#read");
+    let update = document.querySelector("#update");
+    read.addEventListener('click',readSomething);
+    update.addEventListener('click',updateSome);
+    
+    function readSomething(){
+        console.log(document.querySelector('h3').textContent);
+    }
+
+    function updateSome(){
+        document.querySelector("h3").textContent = 'bapu thoh';
+    }
+
+</script>
+</body>
+</html>

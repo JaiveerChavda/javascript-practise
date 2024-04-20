@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+    <style>
+        #field{
+        height: 150px;
+        width: 200px;
+        background: lawngreen;
+        border: 10px solid black;
+        overflow: hidden;
+        position: relative;
+        cursor: pointer;
+        }
+
+    #ball {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 40px;
+      height: 40px;
+      transition: all 1s;
+    }
+
+    .menu ul{
+        margin: 0;
+        list-style-type: none;
+        padding-left: 20px;
+        display: none;        
+    }
+
+    .menu .title{
+        font-size: 18;
+        cursor: pointer;
+    }
+
+
+   .menu .title::before{
+        content: '▶ ';
+      font-size: 80%;
+      color: green;
+   }
+  
+   .menu.open ul{
+        display: block;        
+   }
+
+   .menu.open .title::before{
+    content: '▼';
+   }
+
+
+   
+    </style>
+</head>
+<body>    
+    <div class="menu">
+          <span class="title">Sweeties (click me)!</span>
+        <ul>
+            <li>milk</li>
+            <li>bread</li>
+            <li>butter</li>
+        </ul>
+    </div>
+    <script>
+        let  title = document.querySelector('.title');
+
+        let menuElm = document.querySelector('.menu');
+
+        title.addEventListener('dblclick',function(){
+            menuElm.classList.toggle('open');
+        })
+       
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>Generate Table</button>
+    <script>
+        let btn = document.querySelector('button');
+
+        btn.addEventListener( 'click', () => {
+            // Create table element 
+            let  tbl = document.createElement('table');
+            
+            // Create table body 
+            let tblbody = document.createElement('tbody');
+
+            for(i = 1 ; i < 3 ; i ++){
+
+                let row = document.createElement('tr');
+
+                 for(j = 1; j < 3; j++){
+                    let td = document.createElement('td');
+
+                    let cellText = `row ${i} column${j}`;
+                    
+                    td.create = cellText;
+
+                    row.appendChild(td)
+
+                    console.log(row.childNodes);
+
+                }
+                tblbody.appendChild(row);
+            }
+
+            tbl.appendChild(tblbody);
+
+            document.body.appendChild(tbl);
+
+            tbl.setAttribute("border", "2");
+
+        })
+    </script>
+</body>
+</html>
