@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "alpinejs": "^3.13.8",
+    "lodash-es": "^4.17.21"
+  }
+}
