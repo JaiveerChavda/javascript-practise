@@ -71,7 +71,6 @@
 
       guessField.focus();
 
-
       function checkGuess() {
         const userGuess = Number(guessField.value);
         if (guessCount === 1) {
@@ -103,12 +102,12 @@
         guessField.focus();
       }
 
-      function resetGame(){
+      function resetGame() {
         guessCount = 1;
-        
-        let resetParas = document.querySelectorAll('.resultParas p');
-        for ( const resetPara of resetParas){
-          resetPara.textContent = '';
+
+        let resetParas = document.querySelectorAll(".resultParas p");
+        for (const resetPara of resetParas) {
+          resetPara.textContent = "";
         }
 
         guessField.disabled = false;
@@ -116,11 +115,11 @@
 
         resetButton.parentNode.removeChild(resetButton);
 
-        lastResult.style.backgroundColor = 'white';
+        lastResult.style.backgroundColor = "white";
 
         randomNumber = Math.floor(Math.random() * 100) + 1;
       }
-
+      let blue = "blue";
       guessSubmit.addEventListener("click", checkGuess);
 
       function setGameOver() {

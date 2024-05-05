@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function examples</title>
+</head>
+<body>  
+    <script src="./closures_in_javascript.js"></script>
+    <!-- //callback example -->
+    <script>
+        let get_func_inner = foo(5);
+
+console.log(get_func_inner(4));
+console.log(get_func_inner(3));
+        // let numbers = [2,3,4];
+        
+        // let multiply = function (num){
+        //     return num * 2;
+        // }
+
+        // let result = numbers.map(num => multiply(num) ); 
+        // console.log(result)
+        //function having collback 
+        // function showLength(name,callback){
+        //     callback(name);
+        // }
+
+        // //function expression
+        // const nameLength = function (name){
+        //     console.log(`Given name :${name} which is ${name.length} chars long`);
+            
+        // }
+
+        // showLength('jaiveer',nameLength);
+
+    </script>
+</body>
+</html>
